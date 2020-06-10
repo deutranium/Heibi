@@ -1,16 +1,14 @@
-# flutterapp
+# Team Heibi
 
-A new Flutter application.
+### Getting Started
 
-## Getting Started
+- Ensure you have flutter installed, if not follow the instructions here: [https://flutter.dev/docs/get-started/install](https://flutter.dev/docs/get-started/install)
 
-This project is a starting point for a Flutter application.
+- Setup an Android emulator (can be done using Android Studio - Tools > AVD Manager)
+	- In Ubuntu, you might face an issue about KVM permissions, follow [this](https://askubuntu.com/questions/985142/ubuntu-14-android-studio-3-xrdp-dev-kvm-permission-denied) for troubleshooting
 
-A few resources to get you started if this is your first Flutter project:
+- Start the emulator(can be easily done using Android Studio) - You should be able to see a mobile screen
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- Ensure everything is available and working as required using `flutter doctor`
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Navigate to the repo and run `flutter run` 
