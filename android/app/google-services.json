@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "731057357862",
-    "firebase_url": "https://hackathon-2019-b411f.firebaseio.com",
-    "project_id": "hackathon-2019-b411f",
-    "storage_bucket": "hackathon-2019-b411f.appspot.com"
+    "project_number": "470219291500",
+    "firebase_url": "https://summerip.firebaseio.com",
+    "project_id": "summerip",
+    "storage_bucket": "summerip.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:731057357862:android:52b3cdac07ea35232e92e7",
+        "mobilesdk_app_id": "1:470219291500:android:7574eb92f0309f24515149",
         "android_client_info": {
           "package_name": "com.convenience.heibi"
         }
       },
       "oauth_client": [
         {
-          "client_id": "731057357862-2h22ndthlej31nvggahaugf9ldpr056b.apps.googleusercontent.com",
+          "client_id": "470219291500-h06lduffhd28vk45kemh0slvkqajs0f3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDRS9XKS0vHWxr28i3J5GrtTJeWI5ffdpU"
+          "current_key": "AIzaSyDlSU7N0gT6nT53lRI3mRoNKEdk33yRM4A"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "731057357862-2h22ndthlej31nvggahaugf9ldpr056b.apps.googleusercontent.com",
+              "client_id": "470219291500-h06lduffhd28vk45kemh0slvkqajs0f3.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
