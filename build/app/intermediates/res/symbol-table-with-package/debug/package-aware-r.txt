@@ -1,4 +1,4 @@
-com.example.flutterapp
+com.convenience.heibi
 attr alpha
 attr font
 attr fontProviderAuthority
