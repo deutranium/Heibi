@@ -25,7 +25,7 @@ class MainDrawer extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder : (context) { return new MyHomePage(title : 'Flutter Demo Home Page'); })
+                    MaterialPageRoute(builder : (context) { return new MyHomePage(item : 'washingMachine',number: 1,); })
                 );
               },
             ),
