@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "913006296193",
+    "firebase_url": "https://from-scratch-91c8a.firebaseio.com",
+    "project_id": "from-scratch-91c8a",
+    "storage_bucket": "from-scratch-91c8a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:913006296193:android:1cb2a0fef669eca272a180",
+        "android_client_info": {
+          "package_name": "com.saru.from_scratch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "913006296193-kmq9t9qghvqif18h6qmeq89s8qhaaic4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHAzOOzNJqMRoEnqys_bn0vCdIq-x59d0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "913006296193-kmq9t9qghvqif18h6qmeq89s8qhaaic4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
