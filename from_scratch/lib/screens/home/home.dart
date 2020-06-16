@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:from_scratch/screens/auth/signin.dart';
-import 'package:from_scratch/screens/services/wash.dart';
 // import 'package:from_scratch/screens/services/washingMachine.dart';
 import 'package:from_scratch/services/authenticate.dart';
 import 'package:from_scratch/shared/dropdown.dart';
@@ -14,7 +12,7 @@ class Home extends StatelessWidget {
       backgroundColor: Colors.deepPurple[100],
       appBar: AppBar(
 
-        title: Text("what"),
+        title: Text("Home"),
         backgroundColor: Colors.deepPurple[400],
         actions: <Widget>[
           FlatButton.icon(

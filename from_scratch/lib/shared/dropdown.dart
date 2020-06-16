@@ -16,7 +16,7 @@ class MainDrawer extends StatelessWidget {
             ),
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return new WashingMachine(number: 0, item: 'WashingMachines', max_num : 3 );
+                return new WashingMachine(number: 0, item: 'WashingMachines', maxNum : 3 );
               }));
             },
           ),

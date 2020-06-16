@@ -2,24 +2,19 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class WashingMachine extends StatefulWidget {
-  WashingMachine({Key key, this.item, this.number, this.max_num})
+  WashingMachine({Key key, this.item, this.number, this.maxNum})
       : super(key: key);
   final String item;
   final int number;
   // ignore: non_constant_identifier_names
-  final int max_num;
+  final int maxNum;
   @override
   _WashingMachineState createState() => _WashingMachineState();
 }
 
 class _WashingMachineState extends State<WashingMachine> {
-  int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -46,10 +41,11 @@ class _WashingMachineState extends State<WashingMachine> {
                     style: Theme.of(context).textTheme.headline4,
                   ),
                   FloatingActionButton(
+                    heroTag: "btn1",
                     onPressed: () {
                       int fin =
                           snapshot.data.documents[widget.number]['num'] + 1;
-                      if (fin <= widget.max_num) {
+                      if (fin <= widget.maxNum) {
                         snapshot.data.documents[0].reference.updateData({
                           'num': fin,
                         });
@@ -59,6 +55,7 @@ class _WashingMachineState extends State<WashingMachine> {
                     child: Icon(Icons.add),
                   ),
                   FloatingActionButton(
+                    heroTag: "btn2",
                     onPressed: () {
                       int fin =
                           snapshot.data.documents[widget.number]['num'] - 1;
@@ -77,7 +74,6 @@ class _WashingMachineState extends State<WashingMachine> {
           );
         },
       ),
-      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
