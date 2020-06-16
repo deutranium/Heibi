@@ -13,16 +13,14 @@ class WashingMachine extends StatefulWidget {
 }
 
 class _WashingMachineState extends State<WashingMachine> {
-
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.teal[100],
       appBar: AppBar(
+        backgroundColor: Colors.teal[400],
         title: Text(widget.item),
       ),
-
       body: StreamBuilder(
         stream: Firestore.instance.collection(widget.item).snapshots(),
         builder: (context, snapshot) {
@@ -34,14 +32,19 @@ class _WashingMachineState extends State<WashingMachine> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    'available machines:',
+                    'Available machines:',
+                    style: TextStyle(fontSize: 25),
                   ),
                   Text(
                     snapshot.data.documents[widget.number]['num'].toString(),
-                    style: Theme.of(context).textTheme.headline4,
+                    style: Theme.of(context).textTheme.headline3,
+                  ),
+                  SizedBox(
+                    height: 10.0,
                   ),
                   FloatingActionButton(
                     heroTag: "btn1",
+                    backgroundColor: Colors.teal[400],
                     onPressed: () {
                       int fin =
                           snapshot.data.documents[widget.number]['num'] + 1;
@@ -54,8 +57,12 @@ class _WashingMachineState extends State<WashingMachine> {
                     tooltip: 'Increment',
                     child: Icon(Icons.add),
                   ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
                   FloatingActionButton(
                     heroTag: "btn2",
+                    backgroundColor: Colors.teal[400],
                     onPressed: () {
                       int fin =
                           snapshot.data.documents[widget.number]['num'] - 1;
