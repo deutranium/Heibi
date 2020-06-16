@@ -6,6 +6,7 @@ class WashingMachine extends StatefulWidget {
       : super(key: key);
   final String item;
   final int number;
+  // ignore: non_constant_identifier_names
   final int max_num;
   @override
   _WashingMachineState createState() => _WashingMachineState();

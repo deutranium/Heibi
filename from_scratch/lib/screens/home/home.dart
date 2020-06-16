@@ -14,7 +14,7 @@ class Home extends StatelessWidget {
       backgroundColor: Colors.deepPurple[100],
       appBar: AppBar(
 
-        title: Text('heibi - home'),
+        title: Text("what"),
         backgroundColor: Colors.deepPurple[400],
         actions: <Widget>[
           FlatButton.icon(
@@ -30,7 +30,7 @@ class Home extends StatelessWidget {
 
       ),
       body: Container(
-        
+
       )
     );
   }

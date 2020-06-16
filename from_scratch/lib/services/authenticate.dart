@@ -62,4 +62,14 @@ class Authservice {
       return null;
     }
   }
+
+  Future getUser() async {
+    try {
+      final user = await _auth.currentUser();
+      return user;
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
 }
