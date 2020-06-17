@@ -29,51 +29,138 @@ class _WashingMachineState extends State<WashingMachine> {
           return Container(
             child: Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    'Available machines:',
-                    style: TextStyle(fontSize: 25),
+                children: [
+                  SizedBox(
+                    height: 20.0,
                   ),
                   Text(
-                    snapshot.data.documents[widget.number]['num'].toString(),
-                    style: Theme.of(context).textTheme.headline3,
+                    'Minutes till machine is available: ',
+                    style: TextStyle(fontSize: 23),
                   ),
                   SizedBox(
-                    height: 10.0,
+                    height: 50.0,
                   ),
-                  FloatingActionButton(
-                    heroTag: "btn1",
-                    backgroundColor: Colors.teal[400],
-                    onPressed: () {
-                      int fin =
-                          snapshot.data.documents[widget.number]['num'] + 1;
-                      if (fin <= widget.maxNum) {
-                        snapshot.data.documents[0].reference.updateData({
-                          'num': fin,
-                        });
-                      }
-                    },
-                    tooltip: 'Increment',
-                    child: Icon(Icons.add),
-                  ),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  FloatingActionButton(
-                    heroTag: "btn2",
-                    backgroundColor: Colors.teal[400],
-                    onPressed: () {
-                      int fin =
-                          snapshot.data.documents[widget.number]['num'] - 1;
-                      if (fin > -1) {
-                        snapshot.data.documents[0].reference.updateData({
-                          'num': fin,
-                        });
-                      }
-                    },
-                    tooltip: 'Increment',
-                    child: Icon(Icons.remove),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            'A:',
+                            style: TextStyle(fontSize: 25),
+                          ),
+                          Text(
+                            snapshot.data.documents[widget.number]['num']
+                                .toString(),
+                            style: Theme.of(context).textTheme.headline3,
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          FloatingActionButton(
+                            heroTag: "btn1",
+                            backgroundColor: Colors.teal[400],
+                            onPressed: () {
+                              int fin = snapshot.data.documents[widget.number]
+                                      ['num'] +
+                                  1;
+                              if (fin <= widget.maxNum) {
+                                snapshot.data.documents[0].reference
+                                    .updateData({
+                                  'num': fin,
+                                });
+                              }
+                            },
+                            tooltip: 'Increment',
+                            child: Icon(Icons.cached),
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        width: 50.0,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            'B:',
+                            style: TextStyle(fontSize: 25),
+                          ),
+                          Text(
+                            snapshot.data.documents[widget.number]['num']
+                                .toString(),
+                            style: Theme.of(context).textTheme.headline3,
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          FloatingActionButton(
+                            heroTag: "btn1",
+                            backgroundColor: Colors.teal[400],
+                            onPressed: () {
+                              int fin = snapshot.data.documents[widget.number]
+                                      ['num'] +
+                                  1;
+                              if (fin <= widget.maxNum) {
+                                snapshot.data.documents[0].reference
+                                    .updateData({
+                                  'num': fin,
+                                });
+                              }
+                            },
+                            tooltip: 'Increment',
+                            child: Icon(Icons.cached),
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        width: 50.0,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            'C:',
+                            style: TextStyle(fontSize: 25),
+                          ),
+                          Text(
+                            snapshot.data.documents[widget.number]['num']
+                                .toString(),
+                            style: Theme.of(context).textTheme.headline3,
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          FloatingActionButton(
+                            heroTag: "btn1",
+                            backgroundColor: Colors.teal[400],
+                            onPressed: () {
+                              int fin = snapshot.data.documents[widget.number]
+                                      ['num'] +
+                                  1;
+                              if (fin <= widget.maxNum) {
+                                snapshot.data.documents[0].reference
+                                    .updateData({
+                                  'num': fin,
+                                });
+                              }
+                            },
+                            tooltip: 'Increment',
+                            child: Icon(Icons.cached),
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ],
               ),
