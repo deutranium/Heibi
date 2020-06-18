@@ -26,7 +26,19 @@ class MainDrawer extends StatelessWidget {
             ListTile(
               contentPadding: EdgeInsets.all(20.0),
               title: Text(
-                'form',
+                'Place Order',
+                style: TextStyle(fontSize: 20),
+              ),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return new FormScreen();
+                }));
+              },
+            ),
+            ListTile(
+              contentPadding: EdgeInsets.all(20.0),
+              title: Text(
+                'Change Password',
                 style: TextStyle(fontSize: 20),
               ),
               onTap: () {
