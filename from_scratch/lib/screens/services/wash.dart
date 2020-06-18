@@ -84,9 +84,6 @@ class _WashingMachineState extends State<WashingMachine> {
                             onPressed: () {
                               print('pushed');
                               var time = new DateTime.now();
-                              var startTimeStamp =
-                                  snapshot.data.documents[widget.number]['A'];
-                              var startTime = startTimeStamp.toDate();
                               // print( time.difference(startTime).inSeconds );
 
                               snapshot.data.documents[0].reference.updateData({
@@ -174,6 +171,12 @@ class _WashingMachineState extends State<WashingMachine> {
                         ],
                       ),
                     ],
+                  ),
+                  FlatButton(
+                    child: Text('refresh'),
+                    onPressed: () {
+                      setState(() {});
+                    },
                   ),
                 ],
               ),
