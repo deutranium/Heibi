@@ -1,3 +1,5 @@
+import 'package:flutter_signin_button/button_list.dart';
+import 'package:flutter_signin_button/button_view.dart';
 import 'package:flutter/material.dart';
 import 'package:from_scratch/services/authenticate.dart';
 import 'package:from_scratch/shared/loading.dart';
@@ -89,6 +91,15 @@ class _SignInState extends State<SignIn> {
                               // print(passwd);
                             }
                           },
+                        ),
+                        SignInButton(
+                          Buttons.GoogleDark,
+                          // backgroundColor: Colors.deepOrange,
+                          onPressed: () async {
+                            dynamic result = _auth.signInWithGoogle();
+                            print(result);
+                          },
+                          // child: Text('G'),
                         ),
                         SizedBox(
                           height: 10.0,
