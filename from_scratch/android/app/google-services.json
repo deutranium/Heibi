@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "913006296193-f44fh4v6a5h30kvbu9unirsjf1jfocvb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.saru.from_scratch",
+            "certificate_hash": "68c62ceb39bb91dfdf8a3392598db6cb88a39b8b"
+          }
+        },
+        {
           "client_id": "913006296193-kmq9t9qghvqif18h6qmeq89s8qhaaic4.apps.googleusercontent.com",
           "client_type": 3
         }
