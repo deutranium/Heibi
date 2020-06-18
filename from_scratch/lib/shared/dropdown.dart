@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:from_scratch/screens/services/orderForm.dart';
 import 'package:from_scratch/screens/services/wash.dart';
+import 'package:from_scratch/screens/settings/settings.dart';
 
 class MainDrawer extends StatelessWidget {
   @override
@@ -15,11 +16,11 @@ class MainDrawer extends StatelessWidget {
               title: Text(
                 'washing machine',
                 style: TextStyle(fontSize: 20),
-                
               ),
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return new WashingMachine(number: 0, item: 'WashingMachines', maxNum : 3 );
+                  return new WashingMachine(
+                      number: 0, item: 'WashingMachines', maxNum: 3);
                 }));
               },
             ),
@@ -32,6 +33,25 @@ class MainDrawer extends StatelessWidget {
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return new FormScreen();
+                }));
+              },
+            ),
+            Spacer(),
+            ListTile(
+              contentPadding: EdgeInsets.all(20.0),
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text('Settings', style: TextStyle(fontSize: 20)),
+                  Icon(
+                    Icons.settings,
+                    size: 30,
+                  ),
+                ],
+              ),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return SettingsScreen();
                 }));
               },
             ),
