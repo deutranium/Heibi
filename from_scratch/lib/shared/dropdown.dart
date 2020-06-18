@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:from_scratch/screens/services/displayOrders.dart';
 import 'package:from_scratch/screens/services/orderForm.dart';
 import 'package:from_scratch/screens/services/wash.dart';
 
@@ -32,6 +33,18 @@ class MainDrawer extends StatelessWidget {
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return new FormScreen();
+                }));
+              },
+            ),
+            ListTile(
+              contentPadding: EdgeInsets.all(20.0),
+              title: Text(
+                'DisplayOrders',
+                style: TextStyle(fontSize: 20),
+              ),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return new DisplayOrders();
                 }));
               },
             ),
