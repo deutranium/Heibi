@@ -1,41 +1,94 @@
 import 'package:flutter/material.dart';
+import 'package:from_scratch/services/authenticate.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 
-void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+
+// void main() => runApp(Profile());
+
+class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appTitle = 'Change Password';
 
     return MaterialApp(
       title: appTitle,
-      home: Scaffold(
+      home: Scaffold(                                                               
         appBar: AppBar(
           title: Text(appTitle),
         ),
-        body: MyCustomForm(),
+        body: ProfileScreen(),
       ),
     );
   }
 }
 
 // Create a Form widget.
-class MyCustomForm extends StatefulWidget {
+class ProfileScreen extends StatefulWidget {
   @override
-  MyCustomFormState createState() {
-    return MyCustomFormState();
+  ProfileState createState() {
+    return ProfileState();
   }
 }
 
 // Create a corresponding State class.
 // This class holds data related to the form.
-class MyCustomFormState extends State<MyCustomForm> {
-  // Create a global key that uniquely identifies the Form widget
-  // and allows validation of the form.
-  //
-  // Note: This is a GlobalKey<FormState>,
-  // not a GlobalKey<MyCustomFormState>.
+class ProfileState extends State<ProfileScreen> {
+
   final _formKey = GlobalKey<FormState>();
+  final Authservice _auth = Authservice();
+
+
+
+  String _oldPassword ='';
+  String _newPassword ='';
+  String _confirmPassword ='';
+
+// old passoword widget
+  Widget _buildOldPassword(){
+    return TextFormField(
+      decoration: InputDecoration(labelText: "Old Password"),
+      validator: (value) {
+        if (value.isEmpty) {
+          return 'Enter Old Password';
+        }
+        return null;
+      },
+      onSaved: (String value){
+        _oldPassword = value;
+      }
+    );
+  }
+
+  Widget _buildNewPassword(){
+    return TextFormField(
+      decoration: InputDecoration(labelText: "New Password"),
+      validator: (value) {
+        if (value.isEmpty) {
+          return 'Enter New Password';
+        }
+        return null;
+      },
+      onSaved: (String value){
+        _newPassword = value;
+      }
+    );
+  }
+
+  Widget _buildConfirmPassword(){
+    return TextFormField(
+      decoration: InputDecoration(labelText: "Confirm Password"),
+      validator: (value) {
+        if (value.isEmpty) {
+          return 'Confirm Password';
+        }
+        return null;
+      },
+      onSaved: (String value){
+        _confirmPassword = value;
+      }
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,45 +98,34 @@ class MyCustomFormState extends State<MyCustomForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          TextFormField(
-            decoration: InputDecoration(labelText: "Old Password"),
-            validator: (value) {
-              if (value.isEmpty) {
-                return 'Please enter some text';
-              }
-              return null;
-            },
-          ),
-          TextFormField(
-            decoration: InputDecoration(labelText: "New Password"),
-            validator: (value) {
-              if (value.isEmpty) {
-                return 'Please enter some text';
-              }
-              return null;
-            },
-          ),
-          TextFormField(
-            decoration: InputDecoration(labelText: "Confirm New Password"),
-            validator: (value) {
-              if (value.isEmpty) {
-                return 'Please enter some text';
-              }
-              return null;
-            },
-          ),
+          _buildOldPassword(),
+          _buildNewPassword(),
+          _buildConfirmPassword(),
+          
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             
             child: RaisedButton(
-              onPressed: () {
+              onPressed: () async{
                 // Validate returns true if the form is valid, or false
                 // otherwise.
-                if (_formKey.currentState.validate()) {
-                  // If the form is valid, display a Snackbar.
-                  Scaffold.of(context)
-                      .showSnackBar(SnackBar(content: Text('Password Updated')));
+                if (!_formKey.currentState.validate()) {
+                  return;
                 }
+
+                _formKey.currentState.save();
+                final user = await _auth.getUser();
+
+                user.updatePassword(_newPassword).then((_){
+                  print("Succesfull changed password");
+                }).catchError((error){
+                  print("Password can't be changed" + error.toString());
+                  //This might happen, when the wrong password is in, the user isn't found, or if the user hasn't logged in recently.
+                });
+
+                // If the form is valid, display a Snackbar.
+                Scaffold.of(context)
+                    .showSnackBar(SnackBar(content: Text('Password Updated')));
               },
               child: Text('Submit'),
             ),
