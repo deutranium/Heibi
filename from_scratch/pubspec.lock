@@ -296,7 +296,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.3"
-<<<<<<< HEAD
   rxdart:
     dependency: "direct main"
     description:
@@ -304,7 +303,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.24.1"
-=======
   shared_preferences:
     dependency: "direct main"
     description:
@@ -333,7 +331,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.2+7"
->>>>>>> codelixir/heibi-master
   sky_engine:
     dependency: transitive
     description: flutter
