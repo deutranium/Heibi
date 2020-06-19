@@ -49,7 +49,7 @@ class ProfileState extends State<ProfileScreen> {
 			decoration: InputDecoration(labelText: "Old Password"),
 			validator: (value) {
 				if (value.isEmpty) {
-					return 'Fill this feild';
+					return 'Fill this field';
 				}
 				return null;
 			},
@@ -65,7 +65,7 @@ class ProfileState extends State<ProfileScreen> {
 			obscureText: true,
 			validator: (value) {
 				if (value.isEmpty) {
-					return 'Fill this feild';
+					return 'Fill this field';
 				}
 				return null;
 			},
@@ -81,26 +81,21 @@ class ProfileState extends State<ProfileScreen> {
 			obscureText: true,
 			validator: (value) {
 				if (value.isEmpty) {
-					return 'Fill this feild';
+					return 'Fill this field';
 				}
-				if(value != _newPassword ){
-					return 'Passwords do not match';
-				}
-				return null;
+				// if(value != _newPassword ){
+        //   print("new: " + _newPassword);
+        //   print("confirm: " + value);
+				// 	return 'Passwords do not match';
+				// }
+				// return null;
 			},
 			onSaved: (String value){
+        return "ting ting";
 				_confirmPassword = value;
 			}
 		);
 	}
-
-	// FirebaseUser user = await FirebaseAuth.instance.currentUser();
-	//   AuthResult authResult = await user.reauthenticateWithCredential(
-	//     EmailAuthProvider.getCredential(
-	//       email: user.email,
-	//       password: _oldPassword,
-	//     ),
-	//   );
 
 	@override
 	Widget build(BuildContext context) {
@@ -132,9 +127,12 @@ class ProfileState extends State<ProfileScreen> {
 								dynamic result = await _auth.signInWithEmail(mailID, _oldPassword);
 								print("plz work");
 
-								if(result != null){
+                if(result == null){
+                  Scaffold.of(context).showSnackBar(SnackBar(content: Text('Please check your password and try again')));
+                }
+								else{
 									user.updatePassword(_newPassword).then((_){
-										print("Succesfull changed password");
+										print("Succesfully changed password");
 									}).catchError((error){
 										print("Password can't be changed" + error.toString());
 										//This might happen, when the wrong password is in, the user isn't found, or if the user hasn't logged in recently.
