@@ -62,6 +62,7 @@ class ProfileState extends State<ProfileScreen> {
 	Widget _buildNewPassword(){
 		return TextFormField(
 			decoration: InputDecoration(labelText: "New Password"),
+			obscureText: true,
 			validator: (value) {
 				if (value.isEmpty) {
 					return 'Fill this feild';
@@ -69,7 +70,7 @@ class ProfileState extends State<ProfileScreen> {
 				return null;
 			},
 			onSaved: (String value){
-			_newPassword = value;
+				_newPassword = value;
 			}
 		);
 	}
@@ -77,14 +78,18 @@ class ProfileState extends State<ProfileScreen> {
 	Widget _buildConfirmPassword(){
 		return TextFormField(
 			decoration: InputDecoration(labelText: "Confirm Password"),
+			obscureText: true,
 			validator: (value) {
 				if (value.isEmpty) {
 					return 'Fill this feild';
 				}
+				if(value != _newPassword ){
+					return 'Passwords do not match';
+				}
 				return null;
 			},
 			onSaved: (String value){
-			_confirmPassword = value;
+				_confirmPassword = value;
 			}
 		);
 	}
@@ -140,7 +145,7 @@ class ProfileState extends State<ProfileScreen> {
 								}
 
 							},
-							child: Text('Submit'),
+							child: Text('Change'),
 						),
 					),
 				],
