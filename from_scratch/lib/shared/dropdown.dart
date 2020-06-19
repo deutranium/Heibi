@@ -46,6 +46,9 @@ class MainDrawer extends StatelessWidget {
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return new Profile();
+                }));
+              },
+            ),
             Spacer(),
             ListTile(
               contentPadding: EdgeInsets.all(20.0),
