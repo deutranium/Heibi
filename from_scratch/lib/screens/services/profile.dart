@@ -43,7 +43,10 @@ class ProfileState extends State<ProfileScreen> {
 	String _newPassword ='';
 	String _confirmPassword ='';
 
-	// old passoword widget
+  final TextEditingController _newPass = TextEditingController();
+  final TextEditingController _confirmPass = TextEditingController();
+
+	// old password widget
 	Widget _buildOldPassword(){
 		return TextFormField(
 			decoration: InputDecoration(labelText: "Old Password"),
@@ -61,6 +64,7 @@ class ProfileState extends State<ProfileScreen> {
 
 	Widget _buildNewPassword(){
 		return TextFormField(
+      controller: _newPass,
 			decoration: InputDecoration(labelText: "New Password"),
 			obscureText: true,
 			validator: (value) {
@@ -77,21 +81,22 @@ class ProfileState extends State<ProfileScreen> {
 
 	Widget _buildConfirmPassword(){
 		return TextFormField(
+      controller: _confirmPass,
 			decoration: InputDecoration(labelText: "Confirm Password"),
 			obscureText: true,
 			validator: (value) {
 				if (value.isEmpty) {
 					return 'Fill this field';
 				}
-				// if(value != _newPassword ){
-        //   print("new: " + _newPassword);
-        //   print("confirm: " + value);
-				// 	return 'Passwords do not match';
-				// }
-				// return null;
+				if(value != _newPass.text ){
+          print("new: " + _newPass.text);
+          print("confirm: " + value);
+					return 'Passwords do not match';
+				}
+				return null;
 			},
 			onSaved: (String value){
-        return "ting ting";
+        // return "ting ting";
 				_confirmPassword = value;
 			}
 		);
