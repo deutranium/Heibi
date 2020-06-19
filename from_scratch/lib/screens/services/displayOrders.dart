@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import './secondPage.dart'; 
 
 void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -16,28 +17,9 @@ class DisplayOrders extends StatefulWidget {
 }
 
 class _DisplayOrdersState extends State<DisplayOrders> {
-  String todoTitle = "";
-
-  createTodos() {
-    DocumentReference documentReference =
-        Firestore.instance.collection("MyTodos").document(todoTitle);
-
-    //Map
-    Map<String, String> todos = {"todoTitle": todoTitle};
-
-    documentReference.setData(todos).whenComplete(() {
-      print("$todoTitle created");
-    });
-  }
-
-  deleteTodos(item) {
-    DocumentReference documentReference =
-        Firestore.instance.collection("MyTodos").document(item);
-
-    documentReference.delete().whenComplete(() {
-      print("$item deleted");
-    });
-  }
+  String _items;
+  String _address;
+  String _payment;
 
   @override
   Widget build(BuildContext context) {
@@ -45,39 +27,39 @@ class _DisplayOrdersState extends State<DisplayOrders> {
       appBar: AppBar(
         title: Text("Les Orders"),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
-                  title: Text("Add Shiz"),
-                  content: TextField(
-                    onChanged: (String value) {
-                      todoTitle = value;
-                    },
-                  ),
-                  actions: <Widget>[
-                    FlatButton(
-                        onPressed: () {
-                          createTodos();
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     showDialog(
+      //         context: context,
+      //         builder: (BuildContext context) {
+      //           return AlertDialog(
+      //             shape: RoundedRectangleBorder(
+      //                 borderRadius: BorderRadius.circular(8)),
+      //             title: Text("Add Shiz"),
+      //             content: TextField(
+      //               onChanged: (String value) {
+      //                 todoTitle = value;
+      //               },
+      //             ),
+      //             actions: <Widget>[
+      //               FlatButton(
+      //                   onPressed: () {
+      //                     createTodos();
 
-                          Navigator.of(context).pop();
-                        },
-                        child: Text("Add"))
-                  ],
-                );
-              });
-        },
-        child: Icon(
-          Icons.add,
-          color: Colors.white,
-        ),
-      ),
+      //                     Navigator.of(context).pop();
+      //                   },
+      //                   child: Text("Add"))
+      //             ],
+      //           );
+      //         });
+      //   },
+      //   child: Icon(
+      //     Icons.add,
+      //     color: Colors.white,
+      //   ),
+      // ),
       body: StreamBuilder(
-          stream: Firestore.instance.collection("MyTodos").snapshots(),
+          stream: Firestore.instance.collection("orders").snapshots(),
           builder: (context, snapshots) {
             if (snapshots.hasData) {
               return ListView.builder(
@@ -87,24 +69,22 @@ class _DisplayOrdersState extends State<DisplayOrders> {
                     DocumentSnapshot documentSnapshot =
                         snapshots.data.documents[index];
                     return Dismissible(
-                        onDismissed: (direction) {
-                          deleteTodos(documentSnapshot["todoTitle"]);
-                        },
-                        key: Key(documentSnapshot["todoTitle"]),
+                        key: Key(documentSnapshot["address"]),
                         child: Card(
                           elevation: 4,
                           margin: EdgeInsets.all(8),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8)),
                           child: ListTile(
-                            title: Text(documentSnapshot["todoTitle"]),
-                            trailing: IconButton(
-                                icon: Icon(
-                                  Icons.delete,
-                                  color: Colors.red,
-                                ),
+                            title: Text(documentSnapshot['address']),
+                            trailing: FlatButton(
+                                child: Text("See more"),
                                 onPressed: () {
-                                  deleteTodos(documentSnapshot["todoTitle"]);
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => SecondPage(
+                                        title: documentSnapshot['address'], description: documentSnapshot['mode_of_payment'], description2: documentSnapshot['items'])));
                                 }),
                           ),
                         ));
