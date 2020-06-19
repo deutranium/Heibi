@@ -68,7 +68,7 @@ class _DisplayOrdersState extends State<DisplayOrders> {
                   itemBuilder: (context, index) {
                     DocumentSnapshot documentSnapshot =
                         snapshots.data.documents[index];
-                    return Dismissible(
+                    return Card(
                         key: Key(documentSnapshot["address"]),
                         child: Card(
                           elevation: 4,
