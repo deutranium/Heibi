@@ -79,6 +79,9 @@ class _RegisterState extends State<Register> {
                           print(passwd);
                         }
                       },
+                      // onPressed: () async {
+                      //   _auth.signOutGoogle();
+                      // },
                     ),
                     SignInButton(
                       Buttons.GoogleDark,

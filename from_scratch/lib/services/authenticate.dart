@@ -33,7 +33,8 @@ class Authservice {
   //sign in email+pass
   Future signInWithEmail(String email, String passwd) async {
     try {
-      AuthResult result = await _auth.signInWithEmailAndPassword(email: email, password: passwd);
+      AuthResult result = await _auth.signInWithEmailAndPassword(
+          email: email, password: passwd);
       FirebaseUser fbuser = result.user;
       return _userFromFirebaseUser(fbuser);
     } catch (e) {
@@ -58,6 +59,7 @@ class Authservice {
   //sign out
   Future signout() async {
     try {
+      signOutGoogle();
       return await _auth.signOut();
     } catch (e) {
       print(e.toString());
@@ -77,15 +79,28 @@ class Authservice {
   }
 
   //google sign in
-  Future signInWithGoogle() async{
-    GoogleSignInAccount _googleUser = await _googleSignIn.signIn();
-    GoogleSignInAuthentication googleAuth = await _googleUser.authentication;
+  Future signInWithGoogle() async {
+    final GoogleSignInAccount _googleUser = await _googleSignIn.signIn();
+    final GoogleSignInAuthentication googleAuth =
+        await _googleUser.authentication;
     final AuthCredential credential = GoogleAuthProvider.getCredential(
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
+    // FirebaseUser user = await _auth.signInWithGoogle(
+    //   accessToken: googleAuth.accessToken,
+    //   idToken: googleAuth.idToken,
+    // )
     final AuthResult authresult = await _auth.signInWithCredential(credential);
     FirebaseUser user = authresult.user;
     return _userFromFirebaseUser(user);
   }
+
+  Future signOutGoogle() async {
+    await _googleSignIn.signOut();
+
+    print("User Sign Out");
+  }
+
+
 }
