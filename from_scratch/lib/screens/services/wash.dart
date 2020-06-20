@@ -84,9 +84,6 @@ class _WashingMachineState extends State<WashingMachine> {
                             onPressed: () {
                               print('pushed');
                               var time = new DateTime.now();
-                              var startTimeStamp =
-                                  snapshot.data.documents[widget.number]['A'];
-                              var startTime = startTimeStamp.toDate();
                               // print( time.difference(startTime).inSeconds );
 
                               snapshot.data.documents[0].reference.updateData({
@@ -119,7 +116,7 @@ class _WashingMachineState extends State<WashingMachine> {
                             height: 10.0,
                           ),
                           FloatingActionButton(
-                            heroTag: "btn1",
+                            heroTag: "btn2",
                             backgroundColor: Colors.teal[400],
                             onPressed: () {
                               print('pushed');
@@ -155,7 +152,7 @@ class _WashingMachineState extends State<WashingMachine> {
                             height: 10.0,
                           ),
                           FloatingActionButton(
-                            heroTag: "btn1",
+                            heroTag: "btn3",
                             backgroundColor: Colors.teal[400],
                             onPressed: () {
                               print('pushed');
@@ -174,6 +171,12 @@ class _WashingMachineState extends State<WashingMachine> {
                         ],
                       ),
                     ],
+                  ),
+                  FlatButton(
+                    child: Text('refresh'),
+                    onPressed: () {
+                      setState(() {});
+                    },
                   ),
                 ],
               ),
