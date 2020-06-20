@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:from_scratch/services/authenticate.dart';
 import 'package:from_scratch/shared/dropdown.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:from_scratch/models/option.dart';
 import 'package:from_scratch/shared/loading.dart';
 
 class Home extends StatefulWidget {
@@ -33,14 +32,8 @@ class _HomeState extends State<Home> {
   }
 
   @override
-  void initState() {
-    _getFavsList();
-    print('done');
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    _getFavsList();
     return loading
         ? Loading()
         : Scaffold(
@@ -61,28 +54,15 @@ class _HomeState extends State<Home> {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: favs.map((text) => favCard(text)).toList())),
-            floatingActionButton: FloatingActionButton(
-              onPressed: () {
-                setState(() {
-                  loading = true;
-                  favs = [];
-                  _getFavsList();
-                  print('refreshed');
-                });
-              },
-              child: Icon(Icons.cached),
-              backgroundColor: Colors.purpleAccent[700],
-            ),
           );
   }
 
   Future _getFavsList() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    for (Option item in options) {
-      bool value = prefs.getBool(item.key);
-      if (value == true) {
-        favs.add(item.name);
-      }
+    if (prefs.containsKey('favlist') == false) {
+      favs = [];
+    } else {
+      favs = prefs.getStringList('favlist');
     }
     setState(() {
       loading = false;

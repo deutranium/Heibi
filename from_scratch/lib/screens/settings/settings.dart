@@ -125,9 +125,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   void _saveFavs() async {
+    List<String> myList = [];
     SharedPreferences prefs = await SharedPreferences.getInstance();
     for (Option item in options) {
       prefs.setBool(item.key, item.state);
+      if (item.state) {
+        myList.add(item.name);
+      }
     }
+    prefs.setStringList('favlist', myList);
   }
 }
