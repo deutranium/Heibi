@@ -80,20 +80,23 @@ class Authservice {
 
   //google sign in
   Future signInWithGoogle() async {
-    final GoogleSignInAccount _googleUser = await _googleSignIn.signIn();
-    final GoogleSignInAuthentication googleAuth =
-        await _googleUser.authentication;
-    final AuthCredential credential = GoogleAuthProvider.getCredential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
-    // FirebaseUser user = await _auth.signInWithGoogle(
-    //   accessToken: googleAuth.accessToken,
-    //   idToken: googleAuth.idToken,
-    // )
-    final AuthResult authresult = await _auth.signInWithCredential(credential);
-    FirebaseUser user = authresult.user;
-    return _userFromFirebaseUser(user);
+    try {
+      final GoogleSignInAccount _googleUser = await _googleSignIn.signIn();
+      if( _googleUser == null)
+        return false;
+      final GoogleSignInAuthentication googleAuth =
+          await _googleUser.authentication;
+      final AuthCredential credential = GoogleAuthProvider.getCredential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+      final AuthResult authresult =
+          await _auth.signInWithCredential(credential);
+      FirebaseUser user = authresult.user;
+      return _userFromFirebaseUser(user);
+    } catch (e) {
+      print(e.toString());
+    }
   }
 
   Future signOutGoogle() async {
@@ -101,6 +104,4 @@ class Authservice {
 
     print("User Sign Out");
   }
-
-
 }
