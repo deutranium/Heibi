@@ -116,7 +116,7 @@ class _WashingMachineState extends State<WashingMachine> {
                             height: 10.0,
                           ),
                           FloatingActionButton(
-                            heroTag: "btn1",
+                            heroTag: "btn2",
                             backgroundColor: Colors.teal[400],
                             onPressed: () {
                               print('pushed');
@@ -152,7 +152,7 @@ class _WashingMachineState extends State<WashingMachine> {
                             height: 10.0,
                           ),
                           FloatingActionButton(
-                            heroTag: "btn1",
+                            heroTag: "btn3",
                             backgroundColor: Colors.teal[400],
                             onPressed: () {
                               print('pushed');
