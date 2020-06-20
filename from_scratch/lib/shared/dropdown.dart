@@ -78,7 +78,6 @@ class MainDrawer extends StatelessWidget {
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return new SettingsScreen();
->>>>>>> from_scratch/lib/shared/dropdown.dart
                 }));
               },
             ),
