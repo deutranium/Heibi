@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:from_scratch/screens/services/displayOrders.dart';
 import 'package:from_scratch/screens/services/orderForm.dart';
+import 'package:from_scratch/screens/services/sport.dart';
 import 'package:from_scratch/screens/services/wash.dart';
 import 'package:from_scratch/screens/services/profile.dart';
 import 'package:from_scratch/screens/settings/settings.dart';
@@ -16,7 +17,20 @@ class MainDrawer extends StatelessWidget {
             ListTile(
               contentPadding: EdgeInsets.all(20.0),
               title: Text(
-                'washing machine',
+                'bakul TT',
+                style: TextStyle(fontSize: 20),
+              ),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return new sport(
+                      number: 0, item: 'Table Tennis', maxNum: 2);
+                }));
+              },
+            ),
+            ListTile(
+              contentPadding: EdgeInsets.all(20.0),
+              title: Text(
+                'bakul washing machine',
                 style: TextStyle(fontSize: 20),
               ),
               onTap: () {
