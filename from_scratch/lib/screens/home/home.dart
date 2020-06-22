@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:from_scratch/screens/services/sport.dart';
 // import 'package:from_scratch/screens/services/washingMachine.dart';
 import 'package:from_scratch/services/authenticate.dart';
 import 'package:from_scratch/shared/dropdown.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:from_scratch/shared/loading.dart';
+import 'package:from_scratch/models/option.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -20,13 +22,21 @@ class _HomeState extends State<Home> {
     return Card(
       margin: EdgeInsets.fromLTRB(16, 16, 16, 0),
       color: Colors.deepPurple[50],
-      child: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Text(
-          text,
-          style: TextStyle(fontSize: 28),
-          textAlign: TextAlign.center,
+      child: InkWell(
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Text(
+            text,
+            style: TextStyle(fontSize: 28),
+            textAlign: TextAlign.center,
+          ),
         ),
+
+        onTap: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return identifier[text];
+          }));
+        },
       ),
     );
   }
