@@ -38,6 +38,8 @@ dependencies:
   rxdart: ^0.24.1
   flutter_signin_button: ^1.0.0
 
+  dropdown_formfield: ^0.1.2 # for form dropdown
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
