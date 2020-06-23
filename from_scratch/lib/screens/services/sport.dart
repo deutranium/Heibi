@@ -32,7 +32,7 @@ class _sportState extends State<sport> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    'Available machines:',
+                    'Available Tables:',
                     style: TextStyle(fontSize: 25),
                   ),
                   Text(
