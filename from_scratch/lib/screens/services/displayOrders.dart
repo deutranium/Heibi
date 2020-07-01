@@ -49,34 +49,39 @@ class _DisplayOrdersState extends State<DisplayOrders> {
                         padding: EdgeInsets.all(16),
                         child: DropDownFormField(
                           titleText: 'Location',
-                          hintText: '-- Select --',
+                          hintText: 
+                            locFilter==''? '-- Select --' : locFilter,
                           value: locFilter,
                           onSaved: (value) {
                             setState(() {
                               locFilter = value;
+                              print(locFilter);
+                              print(mopFilter);
                             });
                           },
                           onChanged: (value) {
                             setState(() {
                               locFilter = value;
+                              print(locFilter);
+                              print(mopFilter);
                             });
                           },
                           dataSource: [
                             {
                               "display": "DLF",
-                              "value": "dlf",
+                              "value": "DLF",
                             },
                             {
                               "display": "BBC",
-                              "value": "bbc",
+                              "value": "BBC",
                             },
                             {
                               "display": "JC",
-                              "value": "jc",
+                              "value": "JC",
                             },
                             {
                               "display": "VC",
-                              "value": "vc",
+                              "value": "VC",
                             },
                           ],
                           textField: 'display',
@@ -87,26 +92,30 @@ class _DisplayOrdersState extends State<DisplayOrders> {
                         padding: EdgeInsets.all(16),
                         child: DropDownFormField(
                           titleText: 'Mode of Payment',
-                          hintText: '-- Select --',
+                          hintText: mopFilter==''? '-- Select --' : mopFilter,
                           value: mopFilter,
                           onSaved: (value) {
                             setState(() {
                               mopFilter = value;
+                              print(locFilter);
+                              print(mopFilter);
                             });
                           },
                           onChanged: (value) {
                             setState(() {
                               mopFilter = value;
+                              print(locFilter);
+                              print(mopFilter);
                             });
                           },
                           dataSource: [
                             {
                               "display": "Cash",
-                              "value": "cash",
+                              "value": "CASH",
                             },
                             {
                               "display": "UPI(PayTM/GPay)",
-                              "value": "upi",
+                              "value": "UPI",
                             },
                           ],
                           textField: 'display',
@@ -117,6 +126,8 @@ class _DisplayOrdersState extends State<DisplayOrders> {
                         onPressed: () { setState(() {
                           locFilter='';
                           mopFilter='';
+                          print(locFilter);
+                          print(mopFilter);
                         });}, 
                         label: Text('Clear'),
                         ),
@@ -138,9 +149,9 @@ class _DisplayOrdersState extends State<DisplayOrders> {
                   itemCount: snapshots.data.documents.length,
                   itemBuilder: (context, index) {
                     List<DocumentSnapshot> orderList = snapshots.data.documents
-                          .where((DocumentSnapshot documentSnapshot) => documentSnapshot['mode_of_payment'].toLowerCase().contains(mopFilter.toLowerCase()) && documentSnapshot['place'].toLowerCase().contains(locFilter.toLowerCase()).toList());
+                          .where((DocumentSnapshot documentSnapshot) => (mopFilter==''? true:documentSnapshot['mode_of_payment'].contains(mopFilter)) && (locFilter==''? true:documentSnapshot['place'].contains(locFilter))).toList();
                     DocumentSnapshot documentSnapshot =
-                        orderList.toList()[index];
+                        orderList.elementAt(0);
                     return Card(
                         key: Key(documentSnapshot["address"]),
                         child: Card(
