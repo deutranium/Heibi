@@ -26,7 +26,7 @@ class _DisplayOrdersState extends State<DisplayOrders> {
   String loc;
   String dropdownValue1='Location';
   String dropdownValue2='Mode of Payment';
-  String locFilter='', mopFilter='';
+  String _locFilter='', _mopFilter='';
 
   Widget _buildLocationDrop(){
     return Container(
@@ -35,20 +35,20 @@ class _DisplayOrdersState extends State<DisplayOrders> {
                           titleText: 'Location',
                           hintText: 
                             '-- Select --',
-                          value: locFilter,
+                          value: _locFilter,
                           onSaved: (value) {
                             setState(() {
-                              locFilter = value;
+                              _locFilter = value;
                             });
-                            print(locFilter);
-                            print(mopFilter);
+                            print(_locFilter);
+                            print(_mopFilter);
                           },
                           onChanged: (value) {
                             setState(() {
-                              locFilter = value;
+                              _locFilter = value;
                             });
-                            print(locFilter);
-                            print(mopFilter);
+                            print(_locFilter);
+                            print(_mopFilter);
                           },
                           dataSource: [
                             {
@@ -80,20 +80,20 @@ class _DisplayOrdersState extends State<DisplayOrders> {
                         child: DropDownFormField(
                           titleText: 'Mode of Payment',
                           hintText: '-- Select --',
-                          value: mopFilter,
+                          value: _mopFilter,
                           onSaved: (value) {
                             setState(() {
-                              mopFilter = value;
+                              _mopFilter = value;
                             });
-                            print(locFilter);
-                            print(mopFilter);
+                            print(_locFilter);
+                            print(_mopFilter);
                           },
                           onChanged: (value) {
                             setState(() {
-                              mopFilter = value;
+                              _mopFilter = value;
                             });
-                            print(locFilter);
-                            print(mopFilter);
+                            print(_locFilter);
+                            print(_mopFilter);
                           },
                           dataSource: [
                             {
@@ -114,10 +114,10 @@ class _DisplayOrdersState extends State<DisplayOrders> {
   Widget _buildClearButton(){
     return FloatingActionButton.extended(
                         onPressed: () { setState(() {
-                          locFilter='';
-                          mopFilter='';
-                          print(locFilter);
-                          print(mopFilter);
+                          _locFilter='';
+                          _mopFilter='';
+                          print(_locFilter);
+                          print(_mopFilter);
                         });}, 
                         label: Text('Clear'),
                         );
@@ -127,7 +127,7 @@ class _DisplayOrdersState extends State<DisplayOrders> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Les Orders"),
+        title: Text("Orders"),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -159,10 +159,10 @@ class _DisplayOrdersState extends State<DisplayOrders> {
               return ListView.builder(
                   shrinkWrap: true,
                   itemCount: snapshots.data.documents
-                          .where((DocumentSnapshot documentSnapshot) => (mopFilter==''? true:documentSnapshot['mode_of_payment'].contains(mopFilter)) && (locFilter==''? true:documentSnapshot['place'].contains(locFilter))).toList().length,
+                          .where((DocumentSnapshot documentSnapshot) => (_mopFilter==''? true:documentSnapshot['mode_of_payment'].contains(_mopFilter)) && (_locFilter==''? true:documentSnapshot['place'].contains(_locFilter))).toList().length,
                   itemBuilder: (context, index) {
                     List<DocumentSnapshot> orderList = snapshots.data.documents
-                          .where((DocumentSnapshot documentSnapshot) => (mopFilter==''? true:documentSnapshot['mode_of_payment'].contains(mopFilter)) && (locFilter==''? true:documentSnapshot['place'].contains(locFilter))).toList();
+                          .where((DocumentSnapshot documentSnapshot) => (_mopFilter==''? true:documentSnapshot['mode_of_payment'].contains(_mopFilter)) && (_locFilter==''? true:documentSnapshot['place'].contains(_locFilter))).toList();
                     DocumentSnapshot documentSnapshot =
                         orderList.elementAt(index);
                     return Card(
