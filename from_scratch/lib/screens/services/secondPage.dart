@@ -18,10 +18,12 @@ class SecondPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Text(description),
-                Text(description2),
+                Text('Mode of Payment: '+description, style: TextStyle(color: Colors.black, fontSize: 20),),
+                SizedBox(height:30),
+                Text('Items: '+description2, style: TextStyle(color: Colors.black, fontSize: 20),),
+                SizedBox(height:30),
                 RaisedButton(
-                    child: Text('Accept Order'),
+                    child: Text('Accept Order', style: TextStyle(color: Colors.white, fontSize: 20),),
                     color: Theme.of(context).primaryColor,
                     textColor: Colors.white,
                     onPressed: () => print("Accepted"),)
