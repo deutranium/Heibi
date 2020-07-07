@@ -28,43 +28,27 @@ class _DisplayOrdersState extends State<DisplayOrders> {
   String dropdownValue2='Mode of Payment';
   String locFilter='', mopFilter='';
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Les Orders"),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
-                  title: Text("Filter"),
-                  content: Column(
-                    children: <Widget>[
-                      Container(
+  Widget _buildLocationDrop(){
+    return Container(
                         padding: EdgeInsets.all(16),
                         child: DropDownFormField(
                           titleText: 'Location',
                           hintText: 
-                            locFilter==''? '-- Select --' : locFilter,
+                            '-- Select --',
                           value: locFilter,
                           onSaved: (value) {
                             setState(() {
                               locFilter = value;
-                              print(locFilter);
-                              print(mopFilter);
                             });
+                            print(locFilter);
+                            print(mopFilter);
                           },
                           onChanged: (value) {
                             setState(() {
                               locFilter = value;
-                              print(locFilter);
-                              print(mopFilter);
                             });
+                            print(locFilter);
+                            print(mopFilter);
                           },
                           dataSource: [
                             {
@@ -87,26 +71,29 @@ class _DisplayOrdersState extends State<DisplayOrders> {
                           textField: 'display',
                           valueField: 'value',
                         ),
-                      ),
-                      Container(
+                      );
+  }
+
+  Widget _buildPaymentDrop(){
+    return Container(
                         padding: EdgeInsets.all(16),
                         child: DropDownFormField(
                           titleText: 'Mode of Payment',
-                          hintText: mopFilter==''? '-- Select --' : mopFilter,
+                          hintText: '-- Select --',
                           value: mopFilter,
                           onSaved: (value) {
                             setState(() {
                               mopFilter = value;
-                              print(locFilter);
-                              print(mopFilter);
                             });
+                            print(locFilter);
+                            print(mopFilter);
                           },
                           onChanged: (value) {
                             setState(() {
                               mopFilter = value;
-                              print(locFilter);
-                              print(mopFilter);
                             });
+                            print(locFilter);
+                            print(mopFilter);
                           },
                           dataSource: [
                             {
@@ -121,8 +108,11 @@ class _DisplayOrdersState extends State<DisplayOrders> {
                           textField: 'display',
                           valueField: 'value',
                         ),
-                      ),
-                      FloatingActionButton.extended(
+                      );
+  }
+
+  Widget _buildClearButton(){
+    return FloatingActionButton.extended(
                         onPressed: () { setState(() {
                           locFilter='';
                           mopFilter='';
@@ -130,7 +120,29 @@ class _DisplayOrdersState extends State<DisplayOrders> {
                           print(mopFilter);
                         });}, 
                         label: Text('Clear'),
-                        ),
+                        );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Les Orders"),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)),
+                  title: Text("Filter"),
+                  content: Column(
+                    children: <Widget>[
+                      _buildLocationDrop(),
+                      _buildPaymentDrop(),
+                      _buildClearButton(),
                     ]),
                 );
               });
@@ -146,12 +158,13 @@ class _DisplayOrdersState extends State<DisplayOrders> {
             if (snapshots.hasData) {
               return ListView.builder(
                   shrinkWrap: true,
-                  itemCount: snapshots.data.documents.length,
+                  itemCount: snapshots.data.documents
+                          .where((DocumentSnapshot documentSnapshot) => (mopFilter==''? true:documentSnapshot['mode_of_payment'].contains(mopFilter)) && (locFilter==''? true:documentSnapshot['place'].contains(locFilter))).toList().length,
                   itemBuilder: (context, index) {
                     List<DocumentSnapshot> orderList = snapshots.data.documents
                           .where((DocumentSnapshot documentSnapshot) => (mopFilter==''? true:documentSnapshot['mode_of_payment'].contains(mopFilter)) && (locFilter==''? true:documentSnapshot['place'].contains(locFilter))).toList();
                     DocumentSnapshot documentSnapshot =
-                        orderList.elementAt(0);
+                        orderList.elementAt(index);
                     return Card(
                         key: Key(documentSnapshot["address"]),
                         child: Card(
