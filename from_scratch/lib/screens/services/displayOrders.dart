@@ -177,11 +177,12 @@ class _DisplayOrdersState extends State<DisplayOrders> {
                             trailing: FlatButton(
                                 child: Text("See more"),
                                 onPressed: () {
+                                  print(documentSnapshot.documentID);
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => SecondPage(
-                                        title: documentSnapshot['address'], description: documentSnapshot['mode_of_payment'], description2: documentSnapshot['items'])));
+                                        title: documentSnapshot['address'], description: documentSnapshot['mode_of_payment'], description2: documentSnapshot['items'], orderID:documentSnapshot.documentID, from:documentSnapshot['place'], )));
                                 }),
                           ),
                         ));
