@@ -5,8 +5,11 @@ import 'package:from_scratch/screens/services/sport.dart';
 import 'package:from_scratch/screens/services/wash.dart';
 import 'package:from_scratch/screens/services/profile.dart';
 import 'package:from_scratch/screens/settings/settings.dart';
+import 'package:from_scratch/screens/services/displayOrdersToDeliver.dart';
+import 'package:from_scratch/services/authenticate.dart';
 
 class MainDrawer extends StatelessWidget {
+  final Authservice _auth = Authservice();
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -65,7 +68,7 @@ class MainDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              contentPadding: EdgeInsets.all(20.0),
+              contentPadding: EdgeInsets.all(0.0),
               title: Text(
                 'Display Orders',
                 style: TextStyle(fontSize: 20),
@@ -73,6 +76,32 @@ class MainDrawer extends StatelessWidget {
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return new DisplayOrders();
+                }));
+              },
+            ),
+            ListTile(
+              contentPadding: EdgeInsets.all(0.0),
+              title: Text(
+                'your delivery',
+                style: TextStyle(fontSize: 20),
+              ),
+              onTap: () async {
+                final user = await _auth.getUser();
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return new DisplayAccepted(type: "ordered", uid:user.uid);
+                }));
+              },
+            ),
+            ListTile(
+              contentPadding: EdgeInsets.all(0.0),
+              title: Text(
+                'you accepted',
+                style: TextStyle(fontSize: 20),
+              ),
+              onTap: () async {
+                final user = await _auth.getUser();
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return new DisplayAccepted(type: "accepted", uid:user.uid);
                 }));
               },
             ),

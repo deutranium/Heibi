@@ -123,6 +123,7 @@ class _FormScreenState extends State<FormScreen> {
                         'mode_of_payment': _payment,
                         'User_id': user.uid,
                         'place' : _place,
+                        'accepted' : false,
                       });
                       _formKey.currentState.reset();   //to reset the form after each submission
                     //   alert to tell the user the order has been placed
