@@ -159,10 +159,10 @@ class _DisplayOrdersState extends State<DisplayOrders> {
               return ListView.builder(
                   shrinkWrap: true,
                   itemCount: snapshots.data.documents
-                          .where((DocumentSnapshot documentSnapshot) => (_mopFilter==''? true:documentSnapshot['mode_of_payment'].contains(_mopFilter)) && (_locFilter==''? true:documentSnapshot['place'].contains(_locFilter))).toList().length,
+                          .where((DocumentSnapshot documentSnapshot) => (_mopFilter==''? true:documentSnapshot['mode_of_payment'].contains(_mopFilter)) && (_locFilter==''? true:documentSnapshot['place'].contains(_locFilter)) && (documentSnapshot['accepted']==false) ).toList().length,
                   itemBuilder: (context, index) {
                     List<DocumentSnapshot> orderList = snapshots.data.documents
-                          .where((DocumentSnapshot documentSnapshot) => (_mopFilter==''? true:documentSnapshot['mode_of_payment'].contains(_mopFilter)) && (_locFilter==''? true:documentSnapshot['place'].contains(_locFilter))).toList();
+                          .where((DocumentSnapshot documentSnapshot) => (_mopFilter==''? true:documentSnapshot['mode_of_payment'].contains(_mopFilter)) && (_locFilter==''? true:documentSnapshot['place'].contains(_locFilter)) && (documentSnapshot['accepted']==false)).toList();
                     DocumentSnapshot documentSnapshot =
                         orderList.elementAt(index);
                     return Card(
