@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "/home/kshitijaa/Github/personal_heibi/heibi/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rIN/values-en-rIN.xml",
+            "map": [
+                {
+                    "source": "/home/kshitijaa/.gradle/caches/transforms-2/files-2.1/03de50801950aab64f0548832a05435c/core-1.1.0/res/values-en-rIN/values-en-rIN.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        }
+    ]
+}
