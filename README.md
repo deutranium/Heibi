@@ -1,6 +1,6 @@
 # Heibi
 
-Heibi is a college convinience app made for the students of IIIT but with a scope to be expanded beyond that. It has various useful features which allow tiny but essential tasks like checking the availability of pool table, washing machines etc, getting food and items from shops etc. easier.
+An college convinience app
 
 ## Getting Started
 
@@ -30,9 +30,10 @@ In case this gives errors, solve them and then run the following
 flutter run
 ```
 
+### App 
 
 ### Setup your device
-***for Android***
+***(for Android)***
 
 - Go to *Settings*
 - Click on *More settings*
@@ -40,7 +41,6 @@ flutter run
 - Tap *Build number/version* seven times and you'll get a message saying you're in developer mode now
 - Go back one step and you'll see an option *Developer Tools*
 - Click on it and toggle *USB debugging* to enable
-- Ensure that the file transfer mode is enabled
 
 
 ### Contributors
