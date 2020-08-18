@@ -8,9 +8,7 @@ An college convinience app
 
 - **Flutter > 1.17.4** : Follow [this](https://flutter.dev/docs/get-started/install) if you don't have it already
 - **Dart > 2.8.4** : Follow [this](https://dart.dev/get-dart) if you don't have it already
-- One of the following as the device to run the app on
-	- A device emulator : Follow [this](https://developer.android.com/studio/run/managing-avds) if you don't have it already
-	- A phone connected to the laptop : Refer [Setup your device](#setup-your-device) for more instructions
+- **An Android Emulator** or **An Android phone and USB cable**: 
 
 ### Running the app
 
@@ -29,26 +27,3 @@ In case this gives errors, solve them and then run the following
 ```
 flutter run
 ```
-
-### App 
-
-### Setup your device
-***(for Android)***
-
-- Go to *Settings*
-- Click on *More settings*
-- Go to *About phone > Build number/version*
-- Tap *Build number/version* seven times and you'll get a message saying you're in developer mode now
-- Go back one step and you'll see an option *Developer Tools*
-- Click on it and toggle *USB debugging* to enable
-
-
-### Contributors
-
-- [Abhijeeth Singham]()
-- [Ainesh Sannidhi](https://github.com/inesane)
-- [Kshitijaa Jaglan](https://github.com/deutranium)
-- [Pahulpreet Singh](https://github.com/codelixir)
-- [Rishabh Khanna](https://github.com/KyaBacchaHai)
-- [Saravanan Senthil](https://github.com/saru-d2)
-- [Tushar Jain](https://github.com/tushar994)
