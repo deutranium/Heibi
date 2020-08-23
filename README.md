@@ -1,6 +1,6 @@
 # Heibi
 
-Heibi is a college convinience app made for the students of IIIT but with a scope to be expanded beyond that. It has various useful features which allow tiny but essential tasks like checking the availability of pool table, washing machines etc, getting food and items from shops etc. easier.
+Heibi is a college convenience app made for the students of IIIT but with a scope to be expanded beyond that. It has various useful features which allow tiny but essential tasks like checking the availability of pool table, washing machines etc, getting food and items from shops etc. easier.
 
 ## Getting Started
 
@@ -45,7 +45,7 @@ flutter run
 
 ### Contributors
 
-- [Abhijeeth Singham]()
+- [Abhijeeth Singham](https://github.com/abhisingam)
 - [Ainesh Sannidhi](https://github.com/inesane)
 - [Kshitijaa Jaglan](https://github.com/deutranium)
 - [Pahulpreet Singh](https://github.com/codelixir)
