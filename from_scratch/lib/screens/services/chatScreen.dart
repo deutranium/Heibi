@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:from_scratch/services/authenticate.dart';
 
 class chatScreen extends StatefulWidget {
-  chatScreen({Key key, this.chat_id, this.user_id}) : super(key: key);
+  chatScreen({Key key, this.chat_id, this.user_id})
+      : super(key: key);
   String chat_id;
   String user_id;
   @override
