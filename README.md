@@ -45,7 +45,7 @@ flutter run
 
 ### Contributors
 
-- [Abhijeeth Singham](https://github.com/abhisingam)
+- [Abhijeeth Singam](https://github.com/abhisingam)
 - [Ainesh Sannidhi](https://github.com/inesane)
 - [Kshitijaa Jaglan](https://github.com/deutranium)
 - [Pahulpreet Singh](https://github.com/codelixir)
