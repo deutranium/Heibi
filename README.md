@@ -49,6 +49,6 @@ flutter run
 - [Ainesh Sannidhi](https://github.com/inesane)
 - [Kshitijaa Jaglan](https://github.com/deutranium)
 - [Pahulpreet Singh](https://github.com/codelixir)
-- [Rishabh Khanna](https://github.com/KyaBacchaHai)
+- [Rishabh Khanna](https://github.com/RishKhanna)
 - [Saravanan Senthil](https://github.com/saru-d2)
 - [Tushar Jain](https://github.com/tushar994)
